@@ -1,0 +1,106 @@
+{% extends "diary/base.html" %}
+
+{% block content %}
+<!--FORM START-->
+<form action="???" method="get" id="table">
+<!--COIN NAME-->
+<label for="coin"> What did you buy?</label>
+<input type="text" id="coin" name="coin">
+<!--MOOD-->
+<form action="???" target="mood" method="get">
+    <p>What's your mood?
+    <input type="radio" name="mood" value="epic"> Epic
+    <input type="radio" name="mood" value="great"> Great
+    <input type="radio" name="mood" value="neutral"> Neutral
+    <input type="radio" name="mood" value="bad"> Bad
+    <input type="radio" name="mood" value="pathetic"> Pathetic
+</form> </p>
+<!--LONG/SHORT-->
+<form action="???" target="longshort" method="get">
+    <p>Long or short?
+    <input type="radio" name="long" value="long"> Long
+    <input type="radio" name="short" value="short"> Short
+</form> </p>
+<!--ENTRY PRICE-->
+<label for="entryprice"> Entry price?</label>
+<input type="text" id="entryprice" name="entryprice">
+<!--VOLUME-->
+<p>
+<label for="volume"> How many contracts did you buy?</label>
+<input type="text" id="volume" name="volume">
+</p>
+<!--STOPLOSS AND TAKEPROFIT-->
+<p>
+<label for="sl"> What stop loss did you use?</label>
+<input type="text" id="sl" name="sl">
+</p>
+<p>
+<label for="tp"> What take profit did you use?</label>
+<input type="text" id="tp" name="tp"> 
+</p>
+<!--FORMATION-->
+<p>
+<form action="???" target="formation" method="get">
+    What's the formation? (Hold Ctrl for multiple choice)
+    <select name="formation" multiple>
+    <option value ="nothing">Nothing</option>
+    <option value ="trendline">Trend line</option>
+    <option value ="headandshoulders">Head and shoulders</option>
+    <option value ="support">Support line</option>
+    <option value ="resistance">Resistance line</option>
+    </select> 
+    </p> 
+    </form> 
+</p>
+<!--TIME OPEN-->
+<form>
+    <label for="timeopen"> When did you open the deal?</label>
+    <input type="time" value="timeopen">
+</form>
+<!--TIME CLOSE-->
+<form>
+    <label for="timeclose"> When did you close the deal?</label>
+    <input type="time" value="timeclose">
+</form>
+<!--WHY OPEN?-->
+<p>
+     <form action="???" target="whyopen" method="get"> 
+        Why open? (Hold Ctrl for multiple choice)
+        <select class="custom-select" id='whyopen' multiple>
+            <option value ="bouncelevel">Bounce from strong level</option>
+            <option value ="cominglevel">Coming to strong level</option>
+            <option value ="fibo">Fibonachi</option>
+            <option value ="bouncetrend">Bounce from strong trend</option>
+            <option value ="comingtrend">Coming to strong trend</option>
+            <option value ="falsetrend">False penetration trend line</option>
+            <option value ="falselevel">False penetration level</option>
+            <option value ="trianglebreakdown">Triangle breakout</option>
+            <option value ="falsetrianglebreakdown">False triangle breakout</option>
+            <option value ="dif">Enter your custom option</option>
+        </select> 
+        <div id="add-id" style="display: none;">
+            <textarea name=""></textarea>
+            </div>
+        <script>
+        $("#whyopen").on("click", function () {        
+            if($(this).val() === 'dif')
+                $('#add-id').show()
+        });
+        </script>
+        </p>
+        </form> 
+    </p>
+    <!--COMMENT-->
+<label for="comment"> How it was going? Why closed? What happened after closing? Mistakes to work on?</label>
+<form action="???" target="comment" method="get">
+        <br>
+        <textarea rows="4" cols="80" maxlength="90" name="comment">
+        </textarea>
+
+<!-- SUBMIT BUTTON-->
+<p><button type="submit" form="table" value="Submit"> Submit </button></p>
+</form>
+
+currently logged in user id: {{ request.user.id }}
+{% endblock %}
+
