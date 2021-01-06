@@ -5,8 +5,11 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from .models import Post
 
 # Create your views here.
-def home(request): 
-    return render(request, 'diary/home.html')
+def home(request):
+    context = {
+        'posts': Post.objects.all()
+        } 
+    return render(request, 'diary/home.html', context)
 
 class PostListView(ListView):
     model = Post
@@ -30,7 +33,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'content','num1', 'num2']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -38,7 +41,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content']
+    fields = ['title', 'content','num1','num2']
 
     def form_valid(self, form):
         form.instance.author = self.request.user

@@ -102,5 +102,10 @@
 </form>
 
 currently logged in user id: {{ request.user.id }}
+{% for post in posts %}
+    
+    <p> {{ post.num1 + post.num2 }}
+
+{% endfor %}
 {% endblock %}
 
