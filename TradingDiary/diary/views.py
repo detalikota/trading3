@@ -6,13 +6,19 @@ from .models import Post
 
 # Create your views here.
 def home(request):
+    x = Post.objects.get('num1')
+    y = Post.objects.get('num2')
+    result = x + y
+
+
     context = {
-        'posts': Post.objects.all()
+        'posts': Post.objects.all(),
+        'result': result,
         }
-    def get_queryset(self):
-         result = get_object_or_404(Post, num1)
-     
+    
     return render(request, 'diary/home.html', context)
+
+   
 
 class PostListView(ListView):
     model = Post
