@@ -6,21 +6,25 @@ from .models import Post
 
 # Create your views here.
 def home(request):
-    x = Post.objects.values('num1')
-    #y = Post.objects.get('num2')
-    #result = x + y
-
+    x = Post.objects.all().values_list("num1","num2")
+   # array = []
     for i in x:
-        b = i['num1']
+        y = i[0] + i[1]
+        print (y)        
+        #array.append(y[:,i])
+#    for h in range(y):
+#            print (h)
+
+ #   for h in range(y):
+ #       print (h)
+
+    
 
     context = {
         'posts': Post.objects.all(),
-        'result': b,
         }
     
     return render(request, 'diary/home.html', context)
-
-   
 
 class PostListView(ListView):
     model = Post

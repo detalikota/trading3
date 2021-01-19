@@ -8,6 +8,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     num1 = models.IntegerField(blank=True,default=0)
     num2 = models.IntegerField(blank=True,default=0)
+    num3 = models.IntegerField(blank=True,default=0) 
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
