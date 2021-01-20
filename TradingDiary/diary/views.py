@@ -7,21 +7,16 @@ from .models import Post
 # Create your views here.
 def home(request):
     x = Post.objects.all().values_list("num1","num2")
-   # array = []
     for i in x:
         y = i[0] + i[1]
-        print (y)        
-        #array.append(y[:,i])
-#    for h in range(y):
-#            print (h)
+        return y
 
- #   for h in range(y):
- #       print (h)
 
     
 
     context = {
         'posts': Post.objects.all(),
+        'y':y,
         }
     
     return render(request, 'diary/home.html', context)
