@@ -5,13 +5,33 @@ from django.urls import reverse
 
 # Create your models here.
 class Post(models.Model):
-    title = models.CharField(max_length=100)
-    num1 = models.IntegerField(blank=True,default=0)
-    num2 = models.IntegerField(blank=True,default=0)
-    num3 = models.IntegerField(blank=True,default=0) 
+    coin = models.CharField(max_length=100)
+    price1 = models.IntegerField(blank=True,default=0)
+    price2 = models.IntegerField(blank=True,default=0)
+    number = models.IntegerField(blank=True,default=0)
+    stoploss = models.IntegerField(blank=True,default=0)
+    takeprofit = models.IntegerField(blank=True,default=0) 
     content = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
+    EPIC = 'EP'
+    GREAT = 'GR'
+    NEUTRAL = 'NE'
+    BAD = 'BA'
+    PATHETIC = 'PA'
+    MOOD_CHOICES = [
+        (EPIC, 'Epic'),
+        (GREAT, 'Great'),
+        (NEUTRAL, 'Neutral'),
+        (BAD, 'Bad'),
+        (PATHETIC, 'Pathetic'),
+    ]
+    mood = models.CharField(
+        max_length=2,
+        choices=MOOD_CHOICES,
+        default=NEUTRAL,
+    )
+
 
 
     def __str__(self):

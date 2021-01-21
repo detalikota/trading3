@@ -6,14 +6,14 @@ from .models import Post
 
 # Create your views here.
 def home(request):
-    x = Post.objects.all().values_list("num1","num2")
-    for i in x:
-        y = i[0] + i[1]
-        return y
 
+#    x = Post.objects.all().values_list("num1","num2")
+#    array = []
+#    for i in x:
+#        y = i[0] + i[1]
+#        array.append(y)  
 
-    
-
+   
     context = {
         'posts': Post.objects.all(),
         'y':y,
@@ -45,7 +45,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['title', 'content','num1', 'num2']
+    fields = ['coin','price1','price2','number','stoploss','takeprofit','content','mood',]
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -53,7 +53,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'content','num1','num2']
+    fields = fields = ['coin','price1','price2','number','stoploss','takeprofit','content','mood',]
 
     def form_valid(self, form):
         form.instance.author = self.request.user

@@ -103,8 +103,9 @@
 
 currently logged in user id: {{ request.user.id }}
 
-{% for i in y %}
-    {{ i }}
+
+{% for i in array %}
+    <p> {{ i }} </p>
 {% endfor %}
 
 {% endblock %}
