@@ -16,7 +16,7 @@ def home(request):
    
     context = {
         'posts': Post.objects.all(),
-        'y':y,
+        
         }
     
     return render(request, 'diary/home.html', context)
@@ -45,7 +45,7 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
-    fields = ['coin','price1','price2','number','stoploss','takeprofit','content','mood',]
+    fields = ['coin','price1','price2','number','stoploss','takeprofit','content','mood','date_posted',]
 
     def form_valid(self, form):
         form.instance.author = self.request.user
