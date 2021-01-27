@@ -12,7 +12,7 @@ class Post(models.Model):
     stoploss = models.IntegerField(blank=True,default=0)
     takeprofit = models.IntegerField(blank=True,default=0) 
     content = models.TextField()
-    date_posted = models.DateTimeField()
+    date_posted = models.DateTimeField(null=True, blank=True)
     # AUTHOR    
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     # MOOD
