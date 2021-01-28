@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 # Create your models here.
+
 class Post(models.Model):
     coin = models.CharField(max_length=100)
     price1 = models.IntegerField(blank=True,default=0)
